@@ -15,7 +15,8 @@ jobs:
         git clone https://github.com/Hygieia/Hygieia.git
         cd Hygieia
         ls
-        mvn -v
+        cd /opt
+        sudo tar -xvzf ~/Downloads/apache-maven-3.5.0-bin.tar.gz
 workflows:
   version: 2
   workflow:
