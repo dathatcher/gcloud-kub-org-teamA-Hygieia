@@ -8,6 +8,7 @@ jobs:
     - run: |
         git clone https://github.com/Hygieia/Hygieia.git
         cd Hygieia
+        mvn clean install
         mvn docker:build
 workflows:
   version: 2
