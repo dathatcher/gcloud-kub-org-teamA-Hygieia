@@ -2,20 +2,15 @@ version: 2
 jobs:
   build:
     docker:
-    - image: google/cloud-sdk
+    - image: circleci/node:7.10
     steps:
     - checkout
-    - run:
-        name: Store Service Account
-        command: echo $GCLOUD_SERVICE_KEY > ${HOME}/gcloud-service-key.json
     - run: |
-        gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
-        gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
-        gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
         git clone https://github.com/Hygieia/Hygieia.git
         cd Hygieia
         ls
-        tar -xvzf ~/Downloads/apache-maven-3.5.0-bin.tar.gz
+        mvn -v
+        docker -v
 workflows:
   version: 2
   workflow:
